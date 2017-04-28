@@ -5,7 +5,7 @@ import java.util.Random;
 /**
 * Class storing and managing the torpedos of a ship
 */
-public class TorpedoStore {
+public class TorpedoStore implements ITorpedoStore {
 
   private int torpedos = 0;
   private Random generator = new Random();
@@ -14,6 +14,7 @@ public class TorpedoStore {
     this.torpedos = numberOfTorpedos;
   }
 
+  @Override
   public boolean fire(int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedos){
       throw new IllegalArgumentException("numberOfTorpedos");
@@ -36,10 +37,12 @@ public class TorpedoStore {
     return success;
   }
 
+  @Override
   public boolean isEmpty(){
     return this.torpedos <= 0;
   }
 
+  @Override
   public int getNumberOfTorpedos() {
     return this.torpedos;
   }
